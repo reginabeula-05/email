@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 36px;
+        }
+        .output {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Even Numbers from 1 to 10</h1>
+
+    <button onclick="printEvenNumbers()">Print Even Numbers</button>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        // Function to loop through 1 to 10 and print even numbers
+        function printEvenNumbers() {
+            let result = "";  // Initialize an empty string to store even numbers
+
+            // Loop through numbers 1 to 10
+            for (let i = 1; i <= 10; i++) {
+                // Check if the number is even
+                if (i % 2 === 0) {
+                    result += i + " ";  // Append even number to the result string
+                }
+            }
+
+            // Display the result on the webpage
+            document.getElementById("output").textContent = "Even Numbers: " + result;
+        }
+    </script>
+
+</body>
+</html>
