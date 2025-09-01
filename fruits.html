@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations with Fruits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Array Operations with Fruits</h1>
+
+    <div class="button-container">
+        <button onclick="addFruit()">Add Fruit (Push)</button>
+        <button onclick="removeFruit()">Remove Last Fruit (Pop)</button>
+        <button onclick="addFruitAtStart()">Add Fruit at Start (Unshift)</button>
+        <button onclick="removeFruitAtStart()">Remove First Fruit (Shift)</button>
+    </div>
+
+    <div class="result-container">
+        <h3>Array:</h3>
+        <p id="fruit-array">[]</p>
+        <h3>Array Length:</h3>
+        <p id="array-length">0</p>
+    </div>
+
+    <script>
+        let fruits = [];
+
+        // Update the displayed array and its length
+        function updateDisplay() {
+            document.getElementById("fruit-array").textContent = JSON.stringify(fruits);
+            document.getElementById("array-length").textContent = fruits.length;
+        }
+
+        // Push a fruit to the end of the array
+        function addFruit() {
+            const fruit = prompt("Enter a fruit to add:");
+            if (fruit) {
+                fruits.push(fruit);
+                updateDisplay();
+            }
+        }
+
+        // Pop a fruit from the end of the array
+        function removeFruit() {
+            fruits.pop();
+            updateDisplay();
+        }
+
+        // Unshift (add a fruit to the start of the array)
+        function addFruitAtStart() {
+            const fruit = prompt("Enter a fruit to add at the start:");
+            if (fruit) {
+                fruits.unshift(fruit);
+                updateDisplay();
+            }
+        }
+
+        // Shift (remove a fruit from the start of the array)
+        function removeFruitAtStart() {
+            fruits.shift();
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
