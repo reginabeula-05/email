@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 36px;
+            text-transform: uppercase;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input.error {
+            border-color: red;
+            background-color: #f8d7da;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Form Validation Example</h1>
+
+    <form id="myForm">
+        <label for="name" id="nameLabel">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+
+        <label for="email" id="emailLabel">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+
+        <label for="age" id="ageLabel">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age">
+
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        // Function to validate the form fields
+        function validateForm() {
+            // Clear previous errors
+            clearErrors();
+
+            // Get form elements
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const age = document.getElementById('age');
+
+            let isValid = true;
+
+            // Check if name is empty
+            if (name.value.trim() === "") {
+                isValid = false;
+                name.classList.add('error');
+                name.setAttribute("placeholder", "Name is required");
+            }
+
+            // Check if email is empty
+            if (email.value.trim() === "") {
+                isValid = false;
+                email.classList.add('error');
+                email.setAttribute("placeholder", "Email is required");
+            }
+
+            // Check if age is empty (Optional: You could add other age validation if needed)
+            if (age.value.trim() === "") {
+                isValid = false;
+                age.classList.add('error');
+                age.setAttribute("placeholder", "Age is required");
+            }
+
+            // If the form is valid, you can process the data (in this case, we just log it)
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        }
+
+        // Function to clear previous errors
+        function clearErrors() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.classList.remove('error');
+                input.removeAttribute("placeholder");
+            });
+        }
+
+        // Style all labels to be bold using DOM
+        const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.fontWeight = 'bold';
+        });
+
+        // Style the form and heading using DOM
+        const form = document.getElementById('myForm');
+        form.style.backgroundColor = '#fff';
+        form.style.borderRadius = '8px';
+
+        const heading = document.querySelector('h1');
+        heading.style.color = '#4CAF50';
+        heading.style.textAlign = 'center';
+        heading.style.fontSize = '36px';
+    </script>
+
+</body>
+</html>
